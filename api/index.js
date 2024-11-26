@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(cors({
-    origin: process.env.CORS_ORIGIN.split(','),
+    origin: process.env.CORS_ORIGIN,
     methods: process.env.CORS_METHODS,
     allowedHeaders: process.env.CORS_HEADERS,
     credentials: true
