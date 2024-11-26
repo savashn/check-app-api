@@ -45,8 +45,8 @@ router.delete('/delete/category/:slug', auth, async (req, res) => {
 router.delete('/delete/product/:slug', async (req, res) => {
     try {
         const product = await Product.updateOne(
-            { 'products.slug': req.params.slug }, // Eşleşen ürünün slug'ını bul
-            { $pull: { products: { slug: req.params.slug } } } // Bu slug'a sahip öğeyi diziden sil
+            { 'products.slug': req.params.slug },
+            { $pull: { products: { slug: req.params.slug } } }
         );
         res.send(product);
 

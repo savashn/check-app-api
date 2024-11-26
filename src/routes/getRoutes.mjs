@@ -1,6 +1,5 @@
 import { Router } from "express";
 import Product from "../models/product.mjs";
-// import Admin from "../models/admin.mjs";
 import Table from "../models/table.mjs";
 
 const router = Router();
@@ -45,16 +44,8 @@ router.get('/category/:slug', async (req, res) => {
 });
 
 router.get('/categories', async (req, res) => {
-    // const tableId = req.query.tableId;
     try {
         const categories = await Product.find().select('category slug image -_id');
-        // const table = await Table.findOne({ table: tableId });
-
-        // const response = {
-        //     products,
-        //     checkExists: table && table.totalAmount && table.totalAmount > 0 ? true : false
-        // }
-
         res.send(categories);
 
     } catch (err) {

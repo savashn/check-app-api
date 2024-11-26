@@ -11,24 +11,6 @@ const uploadToCloudinary = async (fileBuffer) => {
     return result.secure_url;
 };
 
-// const deleteFromCloudinary = async (imageUrl) => {
-//     try {
-//         if (!imageUrl) return;
-
-//         const parts = imageUrl.split('/');
-//         const fileNameWithExtension = parts.pop();
-//         const fileName = fileNameWithExtension.split('.')[0];
-//         const publicId = `${parts.pop()}/${fileName}`;
-
-//         console.log("Silme işlemi için public ID:", publicId);  // Log public ID
-
-//         const result = await cloudinary.uploader.destroy(publicId);
-//         console.log("Cloudinary silme sonucu:", result);  // Log Cloudinary sonucu
-//     } catch (err) {
-//         console.error("Cloudinary'den resim silme hatası:", err);
-//     }
-// };
-
 const upload = async (req, res, next) => {
     uploadImage.single('image')(req, res, async (err) => {
         if (err) {

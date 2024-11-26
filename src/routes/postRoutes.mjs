@@ -5,24 +5,9 @@ import Table from "../models/table.mjs";
 import slugify from "slugify";
 import jwt from "jsonwebtoken";
 import auth from "../middlewares/auth.mjs";
-// import multer from 'multer';
-// import { v2 as cloudinary } from "cloudinary";
 import upload from "../middlewares/upload.mjs";
 
 const router = Router();
-
-// const uploadToCloudinary = async (fileBuffer) => {
-//     const result = await cloudinary.uploader
-//         .upload(
-//             `data:image/png;base64,${fileBuffer.toString('base64')}`
-//         );
-
-//     return result.secure_url;
-// }
-
-// const storage = multer.memoryStorage();
-// const upload = multer({ storage }).single('image');
-
 
 router.post('/add/category', upload, async (req, res) => {
     try {
@@ -43,11 +28,8 @@ router.post('/add/category', upload, async (req, res) => {
             return res.status(400).send({ error: 'Slug could not be generated.' });
         }
 
-        // const imageUrl = await uploadToCloudinary(req.file.buffer);
-
         const category = new Product({
             category: req.body.category,
-            // image: imageUrl,
             image: req.imageUrl,
             slug: slug
         });
